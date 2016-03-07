@@ -46,7 +46,7 @@ def form():
 
 @app.route('/hello/', methods=['POST'])
 def hello():
-    email = request.form['youremail']
+    mobile = request.form['yourmobile']
     file = request.files['file']
     basename = file.filename
     suffix = uuid.uuid4().hex
@@ -61,8 +61,8 @@ def hello():
     container_name='images',
     blob_name=filename,
     )
-    body = json.dumps({'email': email, 'image': url})
+    body = json.dumps({'mobile': mobile, 'image': url})
     msg = Message(body)
     sbs.send_queue_message('azureday', msg)
 
-    return render_template('form_action.html', email=email, url=url)
+    return render_template('form_action.html', mobile=mobile, url=url)
