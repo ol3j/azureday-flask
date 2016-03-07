@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47bf345f-7578-4fda-811b-662f5b67c876" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlaskWebProject/templates/form_action.html" afterPath="$PROJECT_DIR$/FlaskWebProject/templates/form_action.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlaskWebProject/templates/form_submit.html" afterPath="$PROJECT_DIR$/FlaskWebProject/templates/form_submit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FlaskWebProject/views.py" afterPath="$PROJECT_DIR$/FlaskWebProject/views.py" />
-    </list>
+    <list default="true" id="47bf345f-7578-4fda-811b-662f5b67c876" name="Default" comment="" />
     <ignored path="azureday-flask.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FlaskWebProject/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63235295" vertical-offset="75" max-vertical-offset="1095">
-              <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.88235295" vertical-offset="75" max-vertical-offset="1095">
+              <caret line="65" column="36" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="36" />
               <folding>
                 <element signature="e#53#111#0" expanded="true" />
               </folding>
@@ -162,7 +158,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../webjob" />
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
@@ -393,7 +389,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1922" height="1175" extended-state="6" />
+    <frame x="-1" y="0" width="1922" height="1175" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -457,8 +453,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FlaskWebProject/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63235295" vertical-offset="75" max-vertical-offset="1095">
-          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.88235295" vertical-offset="75" max-vertical-offset="1095">
+          <caret line="65" column="36" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="36" />
           <folding>
             <element signature="e#53#111#0" expanded="true" />
           </folding>
