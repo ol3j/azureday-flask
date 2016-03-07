@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, url_for
 from FlaskWebProject import app
 from azure.storage.blob import BlobService
 from azure.servicebus import ServiceBusService, Message
-import uuid
+#import uuid
 import json
 import os
 
@@ -49,12 +49,12 @@ def hello():
     mobile = request.form['yourmobile']
     file = request.files['file']
     basename = file.filename
-    suffix = uuid.uuid4().hex
-    filename = '_'.join([suffix, basename])
+    #suffix = uuid.uuid4().hex
+    #filename = '_'.join([suffix, basename])
     filedata = file.read()
     blob_service.put_block_blob_from_bytes(
         'images',
-        filename,
+        basename,
         filedata
     )
     url = blob_service.make_blob_url(
