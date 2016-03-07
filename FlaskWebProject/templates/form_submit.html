@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Azure "things" with Flask</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>Azure "things" with Flask</h1>
+            </div>
+            <div id="content">
+                <form method="post" action="{{ url_for('hello') }}" enctype=multipart/form-data>
+                  <label for="youremail">Please enter your email:</label>
+                  <input type="text" name="youremail" /><br />
+                  <label for="file">Submit file:</label>
+                  <input type="file" name="file">
+                  <input type="submit" />
+                </form>
+            </div>
+     </body>
+</html>

@@ -1,0 +1,16 @@
+ <html>
+    <head>
+        <title>Azure "things" with Flask</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <h1>Azure "things" with Flask</h1>
+            </div>
+            <div id="content">
+                <h2>Hello ({{email}})!</h2>
+                <a href="{{ url }}">{{ url }}</a>
+            </div>
+    </body>
+</html>
