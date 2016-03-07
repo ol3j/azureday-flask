@@ -59,7 +59,7 @@ def hello():
     )
     url = blob_service.make_blob_url(
     container_name='images',
-    blob_name=filename,
+    blob_name=basename,
     )
     body = json.dumps({'mobile': mobile, 'image': url})
     msg = Message(body)
