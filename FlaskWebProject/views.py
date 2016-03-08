@@ -62,7 +62,7 @@ def hello():
     blob_name=filename,
     )
     body = json.dumps({'mobile': mobile, 'image': url})
-    msg = Message(body)
+    msg = Message(body.encode("utf-8"))
     sbs.send_queue_message('azureday', msg)
 
     return render_template('form_action.html', mobile=mobile, url=url)
