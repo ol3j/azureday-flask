@@ -12,31 +12,20 @@ import os
 
 service_keys = {
     'stor_acc_name': os.environ['STOR_ACC_NAME'],
-    'stor_acc_key': os.environ['STOR_ACC_KEY'],
-    'sb_acc_name': os.environ['SB_ACC_NAME'],
-    'sb_acc_key': os.environ['SB_ACC_KEY'],
-    'sb_namespace': os.environ['SB_NAMESP']
+    'stor_acc_key': os.environ['STOR_ACC_KEY']
 }
 
 stor_acc_name = service_keys['stor_acc_name']
 stor_acc_key = service_keys['stor_acc_key']
-sb_acc_name = service_keys['sb_acc_name']
-sb_acc_key = service_keys['sb_acc_key']
-sb_namespace = service_keys['sb_namespace']
+
 
 
 # storage
 account_name = stor_acc_name
 account_key = stor_acc_key
 blob_service = BlobService(account_name, account_key)
-
-#service bus
-key_name = sb_acc_name
-key_value = sb_acc_key
-service_namespace = sb_namespace
-sbs = ServiceBusService(service_namespace,
-                        shared_access_key_name=key_name,
-                        shared_access_key_value=key_value)
+queue_service = QueueService(account_name=stor_acc_name, account_key=stor_acc_key)
+queue_service.create_queue('taskqueue')
 
 @app.route('/')
 @app.route('/home')
@@ -62,7 +51,6 @@ def hello():
     blob_name=filename,
     )
     body = json.dumps({'mobile': mobile, 'image': url})
-    msg = Message(body.encode("utf-8"))
-    sbs.send_queue_message('azureday', msg)
+    queue_service.put_message('taskqueue', body)
 
     return render_template('form_action.html', mobile=mobile, url=url)
