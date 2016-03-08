@@ -29,7 +29,8 @@ queue_service.create_queue('taskqueue')
 @app.route('/')
 @app.route('/home')
 def form():
-    return render_template('form_submit.html')
+    instance = os.getenv('WEBSITE_INSTANCE_ID', 0)
+    return render_template('form_submit.html', instance=instance)
 
 
 @app.route('/hello/', methods=['POST'])
@@ -51,5 +52,5 @@ def hello():
     )
     body = json.dumps({'mobile': str(mobile), 'image': str(url)})
     queue_service.put_message('taskqueue', body)
-    instance = os.getenv('WEBSITE_INSTANCE_ID', 0)
-    return render_template('form_action.html', mobile=mobile, url=url, instance=instance)
+
+    return render_template('form_action.html', mobile=mobile, url=url)
