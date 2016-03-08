@@ -7,6 +7,7 @@
         <div id="container">
             <div class="title">
                 <h1>Azure "things" with Flask</h1>
+                <p>instance: {{ instance }}</p>
             </div>
             <div id="content">
                 <form method="post" action="{{ url_for('hello') }}" enctype=multipart/form-data>
