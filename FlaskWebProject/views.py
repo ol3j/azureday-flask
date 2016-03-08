@@ -24,7 +24,7 @@ stor_acc_key = service_keys['stor_acc_key']
 account_name = stor_acc_name
 account_key = stor_acc_key
 blob_service = BlobService(account_name, account_key)
-queue_service = QueueService(account_name=stor_acc_name, account_key=stor_acc_key)
+queue_service = QueueService(account_name, account_key)
 queue_service.create_queue('taskqueue')
 
 @app.route('/')
@@ -50,7 +50,7 @@ def hello():
     container_name='images',
     blob_name=filename,
     )
-    body = json.dumps({'mobile': mobile, 'image': url})
+    body = json.dumps({'mobile': str(mobile), 'image': str(ur)})
     queue_service.put_message('taskqueue', body)
 
     return render_template('form_action.html', mobile=mobile, url=url)
