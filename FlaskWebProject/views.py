@@ -5,7 +5,7 @@ Routes and views for the flask application.
 from flask import Flask, render_template, request, url_for
 from FlaskWebProject import app
 from azure.storage.blob import BlobService
-from azure.servicebus import ServiceBusService, Message
+from azure.storage.queue import QueueService
 import uuid
 import json
 import os
