@@ -50,7 +50,7 @@ def hello():
     container_name='images',
     blob_name=filename,
     )
-    body = json.dumps({'mobile': str(mobile), 'image': str(ur)})
+    body = json.dumps({'mobile': str(mobile), 'image': str(url)})
     queue_service.put_message('taskqueue', body)
 
     return render_template('form_action.html', mobile=mobile, url=url)
