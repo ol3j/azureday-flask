@@ -18,7 +18,7 @@ service_keys = {
 stor_acc_name = service_keys['stor_acc_name']
 stor_acc_key = service_keys['stor_acc_key']
 
-
+instance = os.getenv('WEBSITE_INSTANCE_ID', 0)
 
 # storage
 account_name = stor_acc_name
@@ -53,4 +53,4 @@ def hello():
     body = json.dumps({'mobile': str(mobile), 'image': str(url)})
     queue_service.put_message('taskqueue', body)
 
-    return render_template('form_action.html', mobile=mobile, url=url)
+    return render_template('form_action.html', mobile=mobile, url=url, instance=instance)
