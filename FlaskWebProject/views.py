@@ -75,7 +75,7 @@ def hello():
     table_service.insert_entity('tasktable', task)
     r.set(suffix, mobile)
     important_metric = randint(0,9)
-    tc.track_metric('important metric', important_metric, { 'App': 'PozTest', 'Version': 'staging' })
+    tc.track_metric('important metric', important_metric)
     tc.flush()
 
     return render_template('form_action.html', mobile=mobile, url=url, important_metric=important_metric)
