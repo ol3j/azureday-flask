@@ -29,8 +29,8 @@ queue_service.create_queue('taskqueue')
 @app.route('/')
 @app.route('/home')
 def form():
-    instance = os.getenv('WEBSITE_INSTANCE_ID', 0)
-    return render_template('form_submit.html', instance=instance)
+    # instance = os.getenv('WEBSITE_INSTANCE_ID', 0)
+    return render_template('form_submit.html')
 
 
 @app.route('/hello/', methods=['POST'])
