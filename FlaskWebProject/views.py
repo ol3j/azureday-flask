@@ -7,23 +7,27 @@ from FlaskWebProject import app
 from azure.storage.blob import BlobService
 from azure.storage.queue import QueueService
 from azure.storage.table import TableService, Entity
+from applicationinsights import TelemetryClient
 import uuid
 import json
 import os
 import redis
 from random import randint
 
+
 service_keys = {
     'stor_acc_name': os.environ['STOR_ACC_NAME'],
     'stor_acc_key': os.environ['STOR_ACC_KEY'],
     'redis_pass': os.environ['REDIS_PASS'],
-    'redis_server': os.environ['REDIS_SERVER']
-}
+    'redis_server': os.environ['REDIS_SERVER'],
+    'instr_key': os.environ['INSTR_KEY']
+    }
 
 stor_acc_name = service_keys['stor_acc_name']
 stor_acc_key = service_keys['stor_acc_key']
 redis_pass = service_keys['redis_pass']
 redis_server = service_keys['redis_server']
+instr_key = service_keys['instr_key']
 
 
 # storage
@@ -39,6 +43,7 @@ table_service.create_table('tasktable')
 
 r = redis.StrictRedis(host=redis_server, port=6380, db=0, password=redis_pass, ssl=True)
 
+tc = TelemetryClient(instr_key)
 
 @app.route('/')
 @app.route('/home')
@@ -70,5 +75,7 @@ def hello():
     table_service.insert_entity('tasktable', task)
     r.set(suffix, mobile)
     important_metric = randint(0,9)
+    tc.track_metric('important metric', important_metric, { 'App': 'PozTest', 'Version': 'staging' })
+    tc.flush()
 
     return render_template('form_action.html', mobile=mobile, url=url, important_metric=important_metric)
