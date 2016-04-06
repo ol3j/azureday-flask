@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, url_for
 from FlaskWebProject import app
 from azure.storage.blob import BlobService
 from azure.storage.queue import QueueService
+from azure.storage.table import TableService, Entity
 import uuid
 import json
 import os
@@ -26,6 +27,8 @@ blob_service = BlobService(account_name, account_key)
 blob_service.create_container('images')
 queue_service = QueueService(account_name, account_key)
 queue_service.create_queue('taskqueue')
+table_service = TableService(account_name, account_key)
+table_service.create_table('tasktable')
 
 
 @app.route('/')
@@ -54,5 +57,7 @@ def hello():
     )
     body = json.dumps({'mobile': str(mobile), 'image': str(url)})
     queue_service.put_message('taskqueue', body)
+    task = {'PartitionKey': 'tasksPoznan', 'RowKey': suffix, 'mobile' : mobile, 'file' : filename}
+    table_service.insert_entity('tasktable', task)
 
     return render_template('form_action.html', mobile=mobile, url=url)
