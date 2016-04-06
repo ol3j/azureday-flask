@@ -21,11 +21,7 @@ service_keys = {
     'stor_acc_key': os.environ['STOR_ACC_KEY'],
     'redis_pass': os.environ['REDIS_PASS'],
     'redis_server': os.environ['REDIS_SERVER'],
-    'instr_key': os.environ['INSTR_KEY'],
-    'db_name': os.environ['DB_NAME'],
-    'db_user': os.environ['DB_USER'],
-    'db_pass': os.environ['DB_PASS'],
-    'db_server': os.environ['DB_SERVER']
+    'instr_key': os.environ['INSTR_KEY']
     }
 
 stor_acc_name = service_keys['stor_acc_name']
@@ -33,10 +29,6 @@ stor_acc_key = service_keys['stor_acc_key']
 redis_pass = service_keys['redis_pass']
 redis_server = service_keys['redis_server']
 instr_key = service_keys['instr_key']
-db_name = service_keys['db_name']
-db_user = service_keys['db_user']
-db_pass = service_keys['db_pass']
-db_server = service_keys['db_server']
 
 
 # storage
