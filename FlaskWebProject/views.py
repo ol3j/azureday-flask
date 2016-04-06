@@ -48,7 +48,6 @@ tc = TelemetryClient(instr_key)
 @app.route('/')
 @app.route('/home')
 def form():
-    # instance = os.getenv('WEBSITE_INSTANCE_ID', 0)
     return render_template('form_submit.html')
 
 
@@ -71,7 +70,7 @@ def hello():
     )
     body = json.dumps({'suffix': str(suffix), 'image': str(url)})
     queue_service.put_message('taskqueue', body)
-    task = {'PartitionKey': 'tasksPoznan', 'RowKey': suffix, 'mobile' : mobile, 'file' : filename}
+    task = {'PartitionKey': 'tasksPoznan', 'RowKey': suffix, 'mobile': mobile, 'file': filename}
     table_service.insert_entity('tasktable', task)
     r.set(suffix, mobile)
     important_metric = randint(0,9)
