@@ -93,3 +93,11 @@ def logs():
         'sqllog.html',
         query=query
     )
+
+@app.route('/tablelog')
+def tablelogs():
+    tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksPoznan'")
+    return render_template(
+        'tablelog.html',
+        tasks=tasks
+    )
