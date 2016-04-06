@@ -63,7 +63,7 @@ def hello():
     container_name='images',
     blob_name=filename,
     )
-    body = json.dumps({'suffix': str(suffix), 'mobile': str(mobile), 'image': str(url)})
+    body = json.dumps({'suffix': str(suffix), 'image': str(url)})
     queue_service.put_message('taskqueue', body)
     task = {'PartitionKey': 'tasksPoznan', 'RowKey': suffix, 'mobile' : mobile, 'file' : filename}
     table_service.insert_entity('tasktable', task)
