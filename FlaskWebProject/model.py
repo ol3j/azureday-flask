@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, Sequence, String, Float, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, Sequence, String, DateTime
 import urllib.parse
 from datetime import datetime
 import os
@@ -42,9 +42,9 @@ class Log(Base):
     __tablename__ = "logs"
     id = Column(Integer, Sequence('check_id_seq'), primary_key=True, index=True)
     date_time = Column(DateTime, default=datetime.utcnow)
-    suffix = Column(String(255), nullable=False, index=True, default='hostname')
-    mobile = Column(String(255), nullable=False, index=True, default='hostname')
-    image = Column(String(255), nullable=False, index=True, default='hostname')
+    suffix = Column(String(255), nullable=False, index=True, default='suffix')
+    mobile = Column(String(255), nullable=False, index=True, default='mobile')
+    image = Column(String(255), nullable=False, index=True, default='image')
 
 
 Base.metadata.create_all(engine)

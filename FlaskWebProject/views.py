@@ -86,7 +86,7 @@ def hello():
     return render_template('form_action.html', mobile=mobile, url=url, important_metric=important_metric)
 
 @app.route('/sqllog')
-def clients():
+def logs():
     session = db.Session()
     query = session.query(db.Log).order_by(db.Log.id.asc())
     return render_template(
