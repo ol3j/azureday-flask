@@ -11,6 +11,7 @@ import uuid
 import json
 import os
 import redis
+from random import randint
 
 service_keys = {
     'stor_acc_name': os.environ['STOR_ACC_NAME'],
@@ -68,5 +69,6 @@ def hello():
     task = {'PartitionKey': 'tasksPoznan', 'RowKey': suffix, 'mobile' : mobile, 'file' : filename}
     table_service.insert_entity('tasktable', task)
     r.set(suffix, mobile)
+    important_metric = randint(0,9)
 
-    return render_template('form_action.html', mobile=mobile, url=url)
+    return render_template('form_action.html', mobile=mobile, url=url, important_metric=important_metric)
