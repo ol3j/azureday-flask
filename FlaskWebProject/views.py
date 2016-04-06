@@ -23,8 +23,10 @@ stor_acc_key = service_keys['stor_acc_key']
 account_name = stor_acc_name
 account_key = stor_acc_key
 blob_service = BlobService(account_name, account_key)
+blob_service.create_container('images')
 queue_service = QueueService(account_name, account_key)
 queue_service.create_queue('taskqueue')
+
 
 @app.route('/')
 @app.route('/home')
