@@ -8,6 +8,7 @@ from azure.storage.blob import BlobService
 from azure.storage.queue import QueueService
 from azure.storage.table import TableService, Entity
 from applicationinsights import TelemetryClient
+import FlaskWebProject.model as db
 import uuid
 import json
 import os
@@ -72,9 +73,23 @@ def hello():
     queue_service.put_message('taskqueue', body)
     task = {'PartitionKey': 'tasksPoznan', 'RowKey': suffix, 'mobile': mobile, 'file': filename}
     table_service.insert_entity('tasktable', task)
+    session = db.Session()
+    new = db.Log(suffix=suffix, mobile=mobile, image=filename)
+    session.add(new)
+    session.commit()
+    session.close()
     r.set(suffix, mobile)
     important_metric = randint(0,9)
     tc.track_metric('important metric', important_metric)
     tc.flush()
 
     return render_template('form_action.html', mobile=mobile, url=url, important_metric=important_metric)
+
+@app.route('/sqllog')
+def clients():
+    session = db.Session()
+    query = session.query(db.Log).order_by(db.Log.id.asc())
+    return render_template(
+        'sqllog.html',
+        query=query
+    )

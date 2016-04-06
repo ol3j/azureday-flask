@@ -3,3 +3,4 @@ azure
 redis
 requests
 applicationinsights
+sqlalchemy
